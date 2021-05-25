@@ -3,12 +3,14 @@ const Cors = require("cors")
 const mongoose = require("mongoose")
 const config = require("config")
 const smallDataRouter = require("./Router/routerSmall")
+const bigDataRouter = require("./Router/routerBig")
 
 const app = Express()
 app.use(Express.json())
 app.use(Cors())
 
 app.use('/small', smallDataRouter)
+app.use('/big', bigDataRouter)
 
 const PORT = process.env.PORT || config.get("port")
 app.get('/', (req, res)=>res.status(200).send("Server ready"))
